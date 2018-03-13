@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="design.css">
+    </head>
+    <script type="text/javascript">
+        let selectArr = ["a","b","c","d","e"];
+        function myFunction(){
+         
+         let i;
+         let arrLen = selectArr.length;
+         let select = document.getElementById("outputDropdown");
+         let addOption;
+         let selectLen = select.length;
+         for(i=0;i<arrLen;i++){
+                let addOption = document.createElement("option");
+                addOption.text = selectArr[i];
+                select.add(addOption);
+               
+            }
+        }
+        function submitFunc(){
+            
+            event.preventDefault();
+            let select = document.getElementById("outputDropdown");
+            let selectLen = select.length;
+            let addElement = document.getElementById("addValue").value;            
+            let delElement = document.getElementById("deleteValue").value;
+            
+            console.log("Current array :");
+            selectArr.forEach(function(item, index, array) {
+                console.log(index+" : "+item);
+                });
+            
+            if(addElement.length!=0){
+                console.log("Element to be added : "+addElement);
+                
+                selectArr.push(addElement);
+                let addOption = document.createElement("option");
+                addOption.text = addElement;
+                select.options.add(addOption,selectLen+1);
+            }
+            if(delElement.length!=0){
+                console.log("Element to be deleted : "+delElement);
+                let index = selectArr.indexOf(delElement);
+                select.options.remove(index+1);
+                selectArr.splice(index, 1);    
+            }
+            console.log("Updated array :");
+            selectArr.forEach(function(item, index, array) {
+                console.log(index+" : "+item);
+                });
+            
+        }
+    </script>
+    <body  onload="myFunction()">
+         <div class="container">
+            <form id="myForm" ACTION="" METHOD="GET" onsubmit="return submitFunc()">
+            
+                <div class="form-group">
+                </br>
+                </br>
+                    <div class="row p-3 mb-2 bg-light">  
+                        <div class="col .text-primary text-center">
+                            <h1>Register Now!</h1>         
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <label for="addValue">Add</label>
+                            <input type="text" class="form-control" id="addValue" name="addValue">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="outputDropdown">Values</label>
+                            <select id="outputDropdown" name="outputDropdown" class="form-control">
+                                    <option selected value="base">Please Select</option>   
+                            </select>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="w-100"></div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <label for="deleteValue">Delete</label>
+                            <input type="text" id="deleteValue" name="deleteValue" class="form-control" >
+                        </div>
+                        <div class="w-100"></div>
+                        </br>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-2 text-center">
+                            <button type="submit" class="btn btn-primary typeSubmit"  name="submit" value="Submit">Submit</button>
+                        </div>
+                        <div class="col-md-4 text-center">  
+                            <button type="reset" class="btn btn-primary">Reset</button>
+                        </div>
+                    </div>
+                </div>
+    
+            </form>
+        </div>
+    
+    </body>
+</html>
+    

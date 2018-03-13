@@ -1,0 +1,146 @@
+<html>
+<head>
+     
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="design.css">
+
+    <script>
+        function mySubmit(){
+            event.preventDefault();
+            class Address {
+                constructor(flatno,streetname,city, state,country) {
+                this.flatno = flatno;
+                this.streetname = streetname;
+                this.city = city;
+                this.state = state;
+                this.country = country;
+            }
+            dispAdd() {
+                console.log("Address : "+this.flatno+", "+this.streetname+", \n"+this.city+", "+this.state+",\n"+this.country);
+                }
+            }
+
+
+            class Student extends Address{
+	            constructor(name,email,flatno,streetname,city,state,country){
+		            super(flatno,streetname,city,state,country);
+		            this.name = name;
+		            this.email = email;
+	            }
+	            dispStudent(){
+		            console.log("Name : "+this.name+"\nEmail : "+this.email);
+		            this.dispAdd();
+	            }
+            }
+            let name = document.getElementById("Name").value;
+            let email = document.getElementById("emailAdd").value;
+            let flatno = document.getElementById("flat_no").value;
+            let streetnm = document.getElementById("street_name").value;
+            let city = document.getElementById("city").value;
+            let state = document.getElementById("state").value;
+            let country = document.getElementById("country").value;
+
+            //let obj = new Address(flatno,streetnm,city,state,country);
+            //obj.dispAdd();
+
+            let studObj = new Student(name,email,flatno,streetnm,city,state,country);
+            studObj.dispStudent();
+        }
+    
+    </script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <form id="myForm" ACTION="" METHOD="GET" onsubmit="return mySubmit()">
+            
+            <div class="form-group">
+            </br>
+            </br>
+            <div class="row p-3 mb-2 bg-light">  
+                <div class="col .text-primary text-center">
+                    <h1>Register Now!</h1>         
+                </div>
+                <div class="w-100"></div>
+                <br>
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <label for="Name" class="mrgnLabel1">Name</label>
+                    <input type="text" id="Name" name="fullName" class="form-control mrgn" >
+                </div>
+                       
+                <div class="col-md-4">
+                    <label for="emailAdd" class="mrgnLabel">Email</label>
+                    <input type="email" id="emailAdd" name="email" class="form-control" >
+                </div>
+                <div class="col-md-2"></div>
+                <div class="w-100"></div>                        
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <label for="flat_no">Flat no</label>
+                    <input type="text" class="form-control" id="flat_no" name="flat_no">
+                </div>
+                        
+                <div class="col-md-4">
+                    <label for="street_name">Street Name</label>
+                    <input type="text" class="form-control" id="street_name" name="street_name">
+                </div>
+            
+                        <div class="w-100"></div>
+                        
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" id="city" name="city">
+                        </div>
+                        
+                        <div class=" col-md-2">
+                            <label for="state">State</label>
+                            <input type="text" class="form-control" id="state" name="state">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="country">Country</label>
+                            <input type="text" class="form-control" id="country" name="country">
+                        </div>
+                        
+                        <div class="w-100"></div>
+                        
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck">I accept the Terms and Conditions
+                                
+                            </div>
+                        </div>
+                        <div class="col"></div>
+
+                        <div class="w-100"></div>
+                        </br>
+                       
+                        <div class="col"></div>
+               
+                        <div class="col-md-2 text-center">
+                            <button type="submit" class="btn btn-primary " name="submit" value="Submit">Submit</button>
+                        </div>
+                        <div class="col-md-2 text-center">  
+                            <button type="reset" class="btn btn-primary">Reset</button>
+                            
+                        </div>
+                        <div class="col-md-2 text-center">   
+                            <button type="button" class="btn btn-primary">Back</button>
+                        </div>
+
+                        <div class="col"></div>
+                        
+                    </div>
+                </div>
+            </div>
+    
+        </form>
+    </div>
+</body>
+</html>
